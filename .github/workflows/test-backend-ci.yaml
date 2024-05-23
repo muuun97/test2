@@ -18,7 +18,7 @@ jobs:
           distribution: 'corretto'
           java-version: '17'
           
-      - name: 캐시
+      - name: cache gradle
 		    uses: actions/cache@v3
 		    with:
 		      path: |
