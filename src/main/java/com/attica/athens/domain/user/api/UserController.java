@@ -23,7 +23,7 @@ public class UserController {
         return "ok";
     }
 
-    @GetMapping
+    @GetMapping("/suc")
     public String postUser() {
 
         return "배포 success";
