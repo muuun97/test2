@@ -24,6 +24,8 @@ jobs:
           cd ./src/main/resources
           touch ./${{ secrets.PROPERTY_NAME }}
           echo "${{ secrets.APPLICATION_PROD }}" > ./${{ secrets.PROPERTY_NAME }}
+          echo "File content of ./${{ secrets.PROPERTY_NAME}}:"
+          cat ./${{ secrets.PROPERTY_NAME }}
         
       - name: Gradle Caching
         uses: actions/cache@v3
