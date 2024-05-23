@@ -57,3 +57,5 @@ jobs:
           chmod +x gradlew
           ./gradlew jib -Djib.to.image=${{ secrets.DOCKER_NAME_F }}/${{ secrets.DOCKER_NAME_B }}
 
+
+
