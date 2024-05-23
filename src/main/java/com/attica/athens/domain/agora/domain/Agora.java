@@ -26,7 +26,7 @@ import lombok.ToString;
 @Getter
 @ToString(callSuper = true)
 @Table(
-    name = "agora"
+    name = "agora",
     indexes = {
         @Index(name = "idx_agora_title", columnList = "title"),
         @Index(name = "idx_agora_created_at", columnList = "createdAt"),
