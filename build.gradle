@@ -76,7 +76,7 @@ jib {
 		image = "amazonecorretto:17"
 	}
 	to {
-		image = System.getProperty('jib.to.image')
+		image = "${System.getenv('DOCKER_NAME_F')}/${System.getenv('DOCKER_NAME_B')}"
 		tags = ["latest"]
 	}
 	container {
