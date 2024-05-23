@@ -18,7 +18,13 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: '17'
-          
+      
+      - name: Make property
+        run: |
+          cd ./src/main/resources
+          touch ./${{ secrets.PROPERTY_NAME }}
+          echo "${{ secrets.APPLICATION_PROD }}" > ./${{ secrets.PROPERTY_NAME }}
+        
       - name: Gradle Caching
         uses: actions/cache@v3
         with:
@@ -45,4 +51,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWD }}
       
       - name: Gradle build
-        run: ./gradlew jib -Djib.to.image=${{ secrets.DOCKER_NAME_F }}/${{ secrets.DOCKER_NAME_B }}
+        run: |
+          chmod +x gradlew
+          ./gradlew jib -Djib.to.image=${{ secrets.DOCKER_NAME_F }}/${{ secrets.DOCKER_NAME_B }}
+
