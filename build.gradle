@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.2.5'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'checkstyle'
+    id 'com.google.cloud.tools.jib' version '3.3.2'
 }
 
 group = 'com.attica'
@@ -68,4 +69,18 @@ tasks.bootJar {
 
 tasks.jar {
     enabled = true
+}
+
+jib {
+	from {
+		image = "amazonecorretto:17"
+	}
+	to {
+		image = System.getProperty('jib.to.image')
+		tags = ["latest"]
+	}
+	container {
+		creationTime = "USE_CURRENT_TIMESTAMP"
+		jvmFlags = ["-Dspring.profiles.active=prod" ]
+	}
 }
