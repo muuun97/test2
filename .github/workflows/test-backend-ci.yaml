@@ -1,8 +1,9 @@
 name: Athens-CI
 
 on:
-  pull_request:
-    branches: [ main, dev ]
+  push:
+    branches:
+      - "master"
 
 jobs:
   build:
@@ -18,15 +19,15 @@ jobs:
           distribution: 'corretto'
           java-version: '17'
           
-      # - name: cache gradle2
-		  #   uses: actions/cache@v3
-		  #   with:
-		  #     path: |
-		  #       ~/.gradle/caches
-		  #       ~/.gradle/wrapper
-		  #     key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-		  #     restore-keys: |
-		  #       ${{ runner.os }}-gradle-
+      - name: cache gradle2
+		    uses: actions/cache@v3
+		    with:
+		      path: |
+		        ~/.gradle/caches
+		        ~/.gradle/wrapper
+		      key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+		      restore-keys: |
+		        ${{ runner.os }}-gradle-
 
       - name: permission to gradlew
         run: chmod +x ./gradlew
