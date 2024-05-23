@@ -73,10 +73,11 @@ tasks.jar {
 
 jib {
 	from {
-		image = "amazonecorretto:17"
+		image = "eclipse-temurin:17-jdk"
 	}
 	to {
-		image = "${System.getenv('DOCKER_NAME_F')}/${System.getenv('DOCKER_NAME_B')}"
+		image = System.getProperty('jib.to.image')
+        //image = "${System.getenv('DOCKER_NAME_F')}/${System.getenv('DOCKER_NAME_B')}"
 		tags = ["latest"]
 	}
 	container {
