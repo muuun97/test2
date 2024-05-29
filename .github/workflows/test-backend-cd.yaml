@@ -17,7 +17,7 @@ jobs:
           host: ${{ secrets.AWS_IP }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          sourece: ${{ secrets.SOURCE_FILE }}
+          source: ${{ secrets.SOURCE_FILE }}
           target: ${{ secrets.TARGET_PATH }}
 
       - name: Login Docker Hub
